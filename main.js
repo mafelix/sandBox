@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   StackNavigator,
-  // TabNavigator,
+  TabNavigator,
 } from 'react-navigation';
 import {
   StyleSheet,
@@ -14,24 +14,31 @@ import {
 
 var Home = require('./src/components/home.js');
 var Gestures = require('./src/components/gestures.js');
+var AnimationSandbox = require('./src/components/animationSandbox.js');
+var PanRespond = require('./src/components/panRespond.js');
 // import Home from './src/components/home.js';
 // import Gestures from './src/components/gestures.js';
 
-const AppRoutes = StackNavigator({
-  Home: {screen: Home},
-  Gestures: {screen: Gestures}
+const GesturesStack = StackNavigator({
+  gestures: {screen: Gestures},
+  pan: {screen: PanRespond},
 });
 
+const RootRoutes = StackNavigator({
+  Home: {screen: Home},
+  Gestures: {screen: GesturesStack, initialRouteName: 'gestures'},
+  Animate: {screen: AnimationSandbox}
+});
+
+// const TabRoutes = TabNavigator({
+
+// })
+
 class Main extends Component {
-  // return (
-    // <StackNavigator
-    //   initialRoute={AppRoutes.Home}
-    // />
-  // )
   render() {
-    console.log(AppRoutes)
+    console.log(RootRoutes)
     return (
-      <AppRoutes/>
+      <RootRoutes/>
     )
   }
 }

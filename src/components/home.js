@@ -27,7 +27,14 @@ class Home extends Component {
             this.props.navigation.navigate('Gestures')
           }}
         >
-          <Text>This is a test</Text>
+          <Text>Gestures</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => {
+            this.props.navigation.navigate('Animate')
+          }}
+        >
+          <Text>Animations</Text>
         </TouchableHighlight>
       </View>
     )
